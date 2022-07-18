@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class SwagLabsTest extends BaseTest {
     @Test
-    public void toBuyTheBag () throws InterruptedException {
+    public void toBuyTheBag ()  {
         //open Url of page
         driver.get(Urls.REGISTER_FORM_URL);
         //Input username
@@ -19,8 +19,7 @@ public class SwagLabsTest extends BaseTest {
         //Click button login
         driver.findElement(By.name("login-button")).click();
         // Choose the bag and add it to the cart
-        Thread.sleep(5000);
-        driver.findElement(By.xpath("(//button[text()='Add to cart'])[1]")).click();
+        driver.findElement(By.name("add-to-cart-sauce-labs-backpack")).click();
         //Click the button "cart"
         driver.findElement(By.cssSelector(".shopping_cart_link")).click();
         //Add check
