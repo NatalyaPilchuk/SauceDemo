@@ -6,7 +6,7 @@ import factorypages.OpenLinkedinPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LinkedinTest extends BaseTest {
+public class LinkedinTest extends BaseFactoryTest {
     @Test
     public void linkedinTest() {
         FindLinkPage findLinkPage = new FindLinkPage(driver);

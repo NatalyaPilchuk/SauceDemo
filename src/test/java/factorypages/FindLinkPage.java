@@ -28,6 +28,11 @@ public class FindLinkPage extends BasePage {
         super(driver);
     }
 
+    @Override
+    public boolean isPageOpened() {
+        return link.isDisplayed();
+    }
+
     public void openPage() {
         driver.get(Urls.REGISTER_FORM_URL);
     }

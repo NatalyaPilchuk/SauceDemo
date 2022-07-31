@@ -1,24 +1,27 @@
 package tests;
 
+import factorymanager.DriverFactory;
+import factorymanager.DriverManager;
+import factorymanager.DriverType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import utils.PropertyManager;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
+public class BaseFactoryTest {
     public WebDriver driver;
+    public DriverManager driverManager;
+
 
     @BeforeMethod
     public void setUp() {
-        PropertyManager propertyManager = new PropertyManager();
-        propertyManager.loadData();
-        System.setProperty("webdriver.chrome.driver", propertyManager.get("PATH_TO_DRIVER"));
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        setImplicitlyWait();
+        DriverFactory driverFactory = new DriverFactory();
+        driverManager = driverFactory.getManager(DriverType.CHROME);
+        driverManager.createDriver();
+        driverManager.setTimeout();
+        driverManager.startMaximise();
+        driver = driverManager.getDriver();
 
     }
 
@@ -32,7 +35,6 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-
         driver.quit();
 
     }

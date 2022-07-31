@@ -1,7 +1,6 @@
 package factorypages;
 
 import constants.Urls;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,24 +27,40 @@ public class SwagLabsPage extends BasePage {
         super(driver);
     }
 
-    public void openSwagLabsPage() {
+    @Override
+    public boolean isPageOpened() {
+        return loginButton.isDisplayed();
+    }
+
+    public SwagLabsPage openSwagLabsPage() {
         driver.get(Urls.REGISTER_FORM_URL);
+        return this;
     }
 
-    public void inputUserName(String name) {
+    public SwagLabsPage inputUserName(String name) {
         userName.sendKeys(name);
+        return this;
     }
 
-    public void inputPassword(String passw) {
+    public SwagLabsPage inputPassword(String passw) {
         password.sendKeys(passw);
+        return this;
     }
 
-    public void clickLoginButton() {
+    public MenuSignPage clickLoginButton() {
         loginButton.click();
+        return new MenuSignPage(driver);
     }
 
-    public void addBagToTheCart() {
+    public SwagLabsPage addBagToTheCart() {
         addToCart.click();
+        return this;
     }
+
+    public SwagLabsPage clickCartButton() {
+        shoppingCartButton.click();
+        return this;
+    }
+
 
 }

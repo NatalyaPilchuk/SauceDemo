@@ -10,14 +10,24 @@ public class NamePriceOfBagPage extends BasePage {
 
     @FindBy(css = ".inventory_item_price")
     private WebElement bagPrice;
+    @FindBy(css = "#continue-shopping")
+    private WebElement continueShopping;
 
     public NamePriceOfBagPage(WebDriver driver) {
         super(driver);
     }
 
-    public String getBagName() {
-        return bagName.getText();
+    @Override
+    public boolean isPageOpened() {
+        return continueShopping.isDisplayed();
     }
+
+    public String getBagName() {
+
+        return bagName.getText();
+
+    }
+
     public String getBagPrice() {
         return bagPrice.getText();
     }
