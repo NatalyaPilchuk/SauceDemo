@@ -15,6 +15,11 @@ public class OpenLinkedinPage extends BasePage {
         super(driver);
     }
 
+    @Override
+    public boolean isPageOpened() {
+        return logoLinkedin.isDisplayed();
+    }
+
     public boolean loginLinkedin() {
         WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
         webDriverWait.until(ExpectedConditions.visibilityOf(logoLinkedin));
