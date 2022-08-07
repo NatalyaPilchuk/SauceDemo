@@ -5,9 +5,15 @@ import factorypages.MenuSignPage;
 import factorypages.NamePriceOfBagPage;
 import factorypages.SwagLabsPage;
 import models.RegistrationModel;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import testdata.PrepareRegistrationData;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class SwagLabsTest extends BaseFactoryTest {
     @Test
@@ -16,6 +22,13 @@ public class SwagLabsTest extends BaseFactoryTest {
         swagLabsPage.openSwagLabsPage();
         swagLabsPage.inputUserName(Const.USERNAME);
         swagLabsPage.inputPassword(Const.PASSWORD);
+        TakesScreenshot takesScreenshot=(TakesScreenshot)driver;
+        byte[]sourceFile=takesScreenshot.getScreenshotAs(OutputType.BYTES);
+        try {
+            Files.write(Paths.get(String.format("src/test/resources/screenshot.png")), sourceFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         swagLabsPage.clickLoginButton();
         MenuSignPage menuSignPage = new MenuSignPage(driver);
         Assert.assertTrue(menuSignPage.isMenuSignDisplayed(), "there isn't menu sign");
