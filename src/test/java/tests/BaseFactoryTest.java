@@ -17,7 +17,7 @@ public class BaseFactoryTest {
     @BeforeMethod
     public void setUp() {
         DriverFactory driverFactory = new DriverFactory();
-        driverManager = driverFactory.getManager(DriverType.CHROME);
+        driverManager = driverFactory.getManager(DriverType.REMOTE);
         driverManager.createDriver();
         driverManager.setTimeout();
         driverManager.startMaximise();
@@ -26,7 +26,7 @@ public class BaseFactoryTest {
     }
 
     public void setImplicitlyWait() {
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     public void removeImplicitlyWait() {
