@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Test">
+    <test name="Registration">
+        <classes>
+            <class name="tests.RegistrationToSwagLabs"></class>
+            <class name="tests.SwagLabsTest"></class>
+            <class name="tests.LinkedinTest"></class>
+        </classes>
+    </test>
+
+</suite>
