@@ -5,9 +5,10 @@ import factorypages.FindLinkPage;
 import factorypages.OpenLinkedinPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.RetryAnalyser;
 
 public class LinkedinTest extends BaseFactoryTest {
-    @Test
+    @Test(retryAnalyzer = RetryAnalyser.class)
     public void linkedinTest() {
         FindLinkPage findLinkPage = new FindLinkPage(driver);
         findLinkPage.openPage();

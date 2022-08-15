@@ -6,9 +6,10 @@ import models.RegistrationModel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import testdata.PrepareRegistrationData;
+import utils.RetryAnalyser;
 
 public class RegistrationToSwagLabs extends BaseFactoryTest {
-    @Test
+    @Test(priority = 1,retryAnalyzer = RetryAnalyser.class)
     public void validRegistrationTest() {
         SwagLabsPage swagLabsPage = new SwagLabsPage(driver);
         swagLabsPage.openSwagLabsPage();
@@ -20,7 +21,7 @@ public class RegistrationToSwagLabs extends BaseFactoryTest {
         Assert.assertTrue(menuSignPage.isMenuSignDisplayed(), "there isn't menu sign");
     }
 
-    @Test
+    @Test(priority = 4,retryAnalyzer = RetryAnalyser.class)
     public void registration2Test() {
         SwagLabsPage swagLabsPage = new SwagLabsPage(driver);
         swagLabsPage.openSwagLabsPage();
@@ -32,7 +33,7 @@ public class RegistrationToSwagLabs extends BaseFactoryTest {
         Assert.assertTrue(menuSignPage.isMenuSignDisplayed(), "there isn't menu sign");
     }
 
-    @Test
+    @Test(priority = 2, retryAnalyzer = RetryAnalyser.class)
     public void registration3Test() {
         SwagLabsPage swagLabsPage = new SwagLabsPage(driver);
         swagLabsPage.openSwagLabsPage();
@@ -44,7 +45,7 @@ public class RegistrationToSwagLabs extends BaseFactoryTest {
         Assert.assertTrue(menuSignPage.isMenuSignDisplayed(), "there isn't menu sign");
     }
 
-    @Test
+    @Test(priority = 3,retryAnalyzer = RetryAnalyser.class)
     public void registration4Test() {
         SwagLabsPage swagLabsPage = new SwagLabsPage(driver);
         swagLabsPage.openSwagLabsPage();

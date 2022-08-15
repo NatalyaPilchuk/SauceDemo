@@ -4,19 +4,18 @@ import constants.Const;
 import factorypages.MenuSignPage;
 import factorypages.NamePriceOfBagPage;
 import factorypages.SwagLabsPage;
-import models.RegistrationModel;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import testdata.PrepareRegistrationData;
+import utils.RetryAnalyser;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class SwagLabsTest extends BaseFactoryTest {
-    @Test
+    @Test(retryAnalyzer = RetryAnalyser.class)
     public void registrationSwagLabsTest() {
         SwagLabsPage swagLabsPage = new SwagLabsPage(driver);
         swagLabsPage.openSwagLabsPage();
@@ -34,7 +33,7 @@ public class SwagLabsTest extends BaseFactoryTest {
         Assert.assertTrue(menuSignPage.isMenuSignDisplayed(), "there isn't menu sign");
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyser.class)
     public void toBuyTheBagTest() {
         SwagLabsPage swagLabsPage = new SwagLabsPage(driver);
         swagLabsPage.openSwagLabsPage();
